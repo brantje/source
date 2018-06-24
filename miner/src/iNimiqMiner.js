@@ -4,7 +4,7 @@ const BufferUtils = Nimiq.BufferUtils;
 const MerklePath = Nimiq.MerklePath;
 const GenesisConfig = Nimiq.GenesisConfig;
 
-class SushiPoolMiner extends BasePoolMiner {
+class INimiqMiner extends BasePoolMiner {
     /**
      * @param {BaseChain} blockchain
      * @param {Accounts} accounts
@@ -34,12 +34,12 @@ class SushiPoolMiner extends BasePoolMiner {
             extraDataProof: BufferUtils.toBase64((await MerklePath.compute(block.body.getMerkleLeafs(), block.body.extraData)).serialize()),
             block: fullValid ? BufferUtils.toBase64(block.serialize()) : undefined
         });
-        Nimiq.Log.i(SushiPoolMiner, `Still connected to pool`);
+        Nimiq.Log.i(INimiqMiner, `Still connected to pool`);
     }
 
     _register() {
         const deviceName = this._deviceName || '';
-        Nimiq.Log.i(SushiPoolMiner, `Registering to pool using device id ${this._deviceId} (${deviceName}) as a smart client.`);
+        Nimiq.Log.i(INimiqMiner, `Registering to pool using device id ${this._deviceId} (${deviceName}) as a smart client.`);
         this._send({
             message: 'register',
             mode: 'smart',
@@ -51,4 +51,4 @@ class SushiPoolMiner extends BasePoolMiner {
     }
 }
 
-module.exports = SushiPoolMiner;
+module.exports = INimiqMiner;
