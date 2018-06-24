@@ -16,8 +16,8 @@ echo ""
 
 #Get Settings
 
-echo 'Using eu.sushipool.com at port 443.'
-usePool="--pool=eu.sushipool.com:443"
+echo 'Using eu.iNimiq.com at port 443.'
+usePool="--pool=eu.iNimiq.com:443"
 nimiqScript="mine.sh"
 
 echo 'Please enter the number of threads: '

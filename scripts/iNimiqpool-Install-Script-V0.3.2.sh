@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 
-echo "  _________            .__    .__                       "
-echo "/   _____/__ __  _____|  |__ |__|                      "
-echo "\_____  \|  |  \/  ___/  |  \|  |                      "
-echo "/        \  |  /\___ \|   Y  \  |                      "
-echo "/_______  /____//____  >___|  /__|                      "
-echo "        \/           \/     \/                          "
-echo ""
-echo "__________             .__                              "
-echo "\______   \____   ____ |  |                             "
-echo "|     ___/  _ \ /  _ \|  |                             "
-echo "|    |  (  <_> |  <_> )  |__                           "
-echo "|____|   \____/ \____/|____/                           "
+echo "  iNimiq mining setup                "
+echo " Credits to sushipool                "
 echo ""
 echo
 echo 'Installing dependencies. Please enter your sudo password if prompted.'
@@ -26,12 +16,12 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update && sudo apt-get install -y yarn
 
 if [ -d "source" ]; then
-    echo 'Existing source directory found. Updating to latest SushiPool codes.'
+    echo 'Existing source directory found. Updating to latest iNimiq codes.'
     cd source/miner
     git pull
 else
-    echo 'Cloning the latest SushiPool codes.'
-    git clone https://git.codehou.se/sushipool/miner/source.git
+    echo 'Cloning the latest iNimiq codes.'
+    git clone https://github.com/inimiqpool/source.git
     cd source/miner
 fi
 yarn
@@ -41,7 +31,7 @@ NC='\033[0m' # No Color
 echo 'startup_message off' >> ~/.screenrc
 
 ans=`DIALOG_ERROR=5 DIALOG_ESC=1 dialog --timeout 120 \
-           --menu "Do you wish to start the SushiPool miner? (this message will time-out in 120s.)" 20 73 8 \
+           --menu "Do you wish to start the iNimiq miner? (this message will time-out in 120s.)" 20 73 8 \
            "1) Yes" "Run miner." \
            "2) Yes, in background" "Run miner using screen." \
            "3) No" "Quit installation." \
@@ -51,28 +41,28 @@ case $rc in
    0) case "$ans" in
         "1) Yes")
             printf "\033c"
-            echo -e "Starting SushiPool miner."
-            ./sushipool
+            echo -e "Starting iNimiq miner."
+            ./iNimiq
             exit;;
         "2) Yes, in background")
             printf "\033c"
-            echo -e "Starting SushiPool miner in a screen session."
+            echo -e "Starting iNimiq miner in a screen session."
             echo "To detach a screen session and return to your normal SSH terminal, type CTRL+A D"
             echo "You can also close your SSH now, and the miner will continue running."
             echo -e "To return to the miner next time, type ${RED}screen -x${NC}."
             read -n 1 -s -r -p "Press any key to continue."
-            screen ./sushipool
+            screen ./iNimiq
             exit;;
         "3) No")
             echo -e "Installation finished. To start mining, type:"
             echo -e "${RED}$ cd source/miner${NC}"
-            echo -e "${RED}$ ./sushipool${NC}"
+            echo -e "${RED}$ ./iNimiq${NC}"
             echo
             exit;;
       esac;;
    *)
        printf "\033c"
-       echo -e "Starting SushiPool miner."
-       ./sushipool
+       echo -e "Starting iNimiq miner."
+       ./iNimiq
       exit;;
 esac

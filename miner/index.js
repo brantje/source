@@ -6,22 +6,22 @@ process.env.UV_THREADPOOL_SIZE = maxThreads;
 const Nimiq = require('@nimiq/core');
 const argv = require('minimist')(process.argv.slice(2));
 const readFromFile = require('./src/Config.js');
-const SushiPoolMiner = require('./src/SushiPoolMiner.js');
+const iNimiqMiner = require('./src/iNimiqMiner.js');
 const readlineSync = require('readline-sync');
 var fs = require('fs');
 const pjson = require('./package.json');
 
 const START = Date.now();
-const TAG = 'SushiPool';
+const TAG = 'iNimiq';
 const $ = {};
-const defaultConfigFile = 'sushipool.conf';
+const defaultConfigFile = 'iNimiq.conf';
 
 const servers = [
-    'eu.sushipool.com',
-    'us-east.sushipool.com',
-    'us-west.sushipool.com',
-    'asia.sushipool.com',
-    'aus.sushipool.com'
+    'eu.iNimiq.com',
+    'us-east.iNimiq.com',
+    'us-west.iNimiq.com',
+    'asia.iNimiq.com',
+    'aus.iNimiq.com'
 ];
 const poolPort = 443;
 
@@ -52,7 +52,7 @@ if (argv.hasOwnProperty('address')) {
         const query = `Enter the number of threads to use for mining (max ${maxThreads}): `;
         const askNumThreads = readlineSync.questionInt(query);
         const options = {guide: false, cancel: false};
-        const askPoolHost = readlineSync.keyInSelect(servers, 'Select a Sushi Server:', options);
+        const askPoolHost = readlineSync.keyInSelect(servers, 'Select a iNimiq Server:', options);
         const ask = {
             address: askAddress,
             threads: askNumThreads,
@@ -101,7 +101,7 @@ function humanHashes(bytes) {
 }
 (async () => {
     const deviceName = config.name || os.hostname();
-    Nimiq.Log.i(TAG, `Sushipool Miner ${pjson.version} starting`);
+    Nimiq.Log.i(TAG, `iNimiq Miner ${pjson.version} starting`);
     Nimiq.Log.i(TAG, `- network          = ${config.network}`);
     Nimiq.Log.i(TAG, `- no. of threads   = ${config.miner.threads}`);
     Nimiq.Log.i(TAG, `- pool server      = ${config.poolMining.host}:${config.poolMining.port}`);
@@ -140,7 +140,7 @@ function humanHashes(bytes) {
     // connect to pool
     const deviceId = Nimiq.BasePoolMiner.generateDeviceId(networkConfig);
 
-    $.miner = new SushiPoolMiner($.blockchain, $.accounts, $.mempool, $.network.time, $.wallet.address, deviceId, deviceName);
+    $.miner = new iNimiqMiner($.blockchain, $.accounts, $.mempool, $.network.time, $.wallet.address, deviceId, deviceName);
 
     $.consensus.on('established', () => {
         Nimiq.Log.i(TAG, `Connecting to pool ${config.poolMining.host} using device id ${deviceId} as a smart client.`);

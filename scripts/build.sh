@@ -19,9 +19,9 @@ PACKAGE_VERSION=$(cat ../miner/package.json \
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
   | xargs)
-echo 'Building SushiPool Miner '${PACKAGE_VERSION}
+echo 'Building iNimiq Miner '${PACKAGE_VERSION}
 BINARIES_DIR='./binaries'
-PACKAGE_DIR='sushipool-'${PLATFORM}-${ARCH}-${PACKAGE_VERSION}-${TAG}
+PACKAGE_DIR='iNimiq-'${PLATFORM}-${ARCH}-${PACKAGE_VERSION}-${TAG}
 OUTPUT_DIR=${BINARIES_DIR}'/'${PACKAGE_DIR}
 
 cd ../miner
@@ -30,7 +30,7 @@ yarn
 cd ../scripts
 echo 'Creating package at '${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}
-pkg --target ${NODE_VERSION}-${PLATFORM}-${ARCH} --output ${OUTPUT_DIR}/'sushipool' ../miner/index.js
+pkg --target ${NODE_VERSION}-${PLATFORM}-${ARCH} --output ${OUTPUT_DIR}/'iNimiq' ../miner/index.js
 
 echo 'Copying native codes'
 cp ../miner/node_modules/@nimiq/core/build/Release/nimiq_node.node ${OUTPUT_DIR}
