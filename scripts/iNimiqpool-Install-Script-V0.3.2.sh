@@ -25,7 +25,7 @@ else
     cd source/miner
 fi
 yarn
-chmod +x ./source/miner/inimiq
+chmod +x ./inimiq
 sleep 5
 RED='\033[0;31m'
 NC='\033[0m' # No Color
