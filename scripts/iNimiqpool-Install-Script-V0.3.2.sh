@@ -25,7 +25,7 @@ else
     cd source/miner
 fi
 yarn
-
+chmod +x ./inimiq
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 echo 'startup_message off' >> ~/.screenrc
