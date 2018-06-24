@@ -17,13 +17,13 @@ const $ = {};
 const defaultConfigFile = 'iNimiq.conf';
 
 const servers = [
-    'eu.iNimiq.com',
-    'us-east.iNimiq.com',
-    'us-west.iNimiq.com',
-    'asia.iNimiq.com',
-    'aus.iNimiq.com'
+    'eu.inimiq.com',
+    'us-east.inimiq.com',
+    'us-west.inimiq.com',
+    'asia.inimiq.com',
+    'aus.inimiq.com'
 ];
-const poolPort = 443;
+const poolPort = 8444;
 
 Nimiq.Log.instance.level = 'info';
 
