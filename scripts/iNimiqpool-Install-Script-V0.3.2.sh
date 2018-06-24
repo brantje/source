@@ -26,7 +26,7 @@ else
 fi
 yarn
 chmod +x ./inimiq
-sleep 5
+sleep 4
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 echo 'startup_message off' >> ~/.screenrc
