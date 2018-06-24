@@ -23,9 +23,9 @@ else
     echo 'Cloning the latest inimiq codes.'
     git clone https://github.com/inimiqpool/source.git
     cd source/miner
+    chmod +x ./inimiq
 fi
 yarn
-chmod +x ./inimiq
 sleep 4
 RED='\033[0;31m'
 NC='\033[0m' # No Color
