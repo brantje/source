@@ -1,19 +1,19 @@
-## SushiPool Website and Downloadable Clients
+## iNimiq Website and Downloadable Clients
 
-### 1. Instruction to run the SushiPool nodejs miner.
+### 1. Instruction to run the iNimiq nodejs miner.
 
-To start mining using the SushiPool nodejs, type the following command.
+To start mining using the inimiq nodejs, type the following command.
 
 ```
 $ cd miner
 $ yarn
-$ ./sushipool
+$ ./inimiq
 ```
 
-By default, configurations will be read from `sushipool.conf` (a JSON file). If no configuration file is found, the script will prompt the user to enter parameter values before saving them into a configuration file. Alternatively you can also specify a different config file when starting the miner. The `--test` parameter can be passed to run the script on the testnet, e.g.
+By default, configurations will be read from `inimiq.conf` (a JSON file). If no configuration file is found, the script will prompt the user to enter parameter values before saving them into a configuration file. Alternatively you can also specify a different config file when starting the miner. The `--test` parameter can be passed to run the script on the testnet, e.g.
 
 ```
-$ ./sushipool --config=sushipool.conf --test
+$ ./inimiq --config=inimiq.conf --test
 ```
 
 The miner script establishes light consensus with the network. If you are running it for the first time, it might take a while to download that, so you can copy the `main-light-consensus` or `test-light-consensus` folders from elsewhere if you have them. Statistics will be printed every 5 seconds, so we don't need to specify that parameter anymore.
@@ -37,3 +37,5 @@ $ ./build.sh node9 win x64 'tag'  # win 64-bit
 ```
 where 'tag' is any string that is used to tag this release, e.g. 'standard', 'fast, 'extreme'
 The output for the command above can be found at `../../binaries`. Run it the same way as in step (1).
+
+This code is made by SushiPool all credits go to them.
